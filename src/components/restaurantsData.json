@@ -1,0 +1,175 @@
+[
+  {
+    "id": "1",
+    "position": [4.05498, 9.73323],
+    "restaurant_name": "Restaurant le Campus 3",
+    "address": "Face entrée principale du Campus 1.",
+    "restaurant_image": "https://lh5.googleusercontent.com/p/AF1QipMEWiQSk_ogIkmlxrGgb3twoQAzfOOgl1Dls8Fr=w262-h104-p-k-no",
+    "restaurant_description": "Restaurant de spécialités d'Afrique de l'Ouest.",
+    "avg_rating": 4.5,
+    "reviews": [
+      {"user_name": "sarah", "comment": "Very good.", "rating": 5 },
+      {"user_name": "john", "comment": "Good.", "rating": 4 }
+    ],
+    "isReviewsOpen":false
+  },
+  {
+    "id": 2,
+    "position": [4.05282, 9.73747],
+    "restaurant_name": "Canovas Prestige",
+    "address": "Situé vers le Stade Cicam",
+    "restaurant_image": "https://lh5.googleusercontent.com/p/AF1QipPcX_2FmqMiAoKrlHiMkNQvlDrqKJgqX3zd7_RS=w408-h408-k-no",
+    "restaurant_description": "Snack-Bar-Grillades",
+    "avg_rating": 1,
+    "reviews": [
+      {"user_name": "michael", "comment": "Good.", "rating": 1 },
+      {"user_name": "jim", "comment": "Good.", "rating": 1 },
+      {"user_name": "lex", "comment": "Bad.", "rating": 1 }
+    ],
+    "isReviewsOpen":false
+  },
+  {
+    "id": 3,
+    "position": [4.05601, 9.73154],
+    "restaurant_name": "Restaurant de l'Amitié",
+    "address": "Sis à Fin Barrière ESSEC Campus 1",
+    "restaurant_image": "https://lh5.googleusercontent.com/p/AF1QipM-phEQS5K5b3oixLeL-l9alRTVoqIa-BdlCAMG=w408-h306-k-no",
+    "restaurant_description": "Restaurant de spécialités sénégalaises.",
+    "avg_rating": 4,
+    "reviews": [
+      {"user_name": "daniel", "comment": "Very Good.", "rating": 5 },
+      {"user_name": "max", "comment": "Good.", "rating": 3 },
+      {"user_name": "kate", "comment": "Good.", "rating": 4 }
+    ],
+    "isReviewsOpen":false
+  },
+  {
+    "id": "56bdf65a498ebf522c03fa87", 
+    "position": [4.055577, 9.730292],
+    "restaurant_name": "Zaira (Restaurant Sénégalais)",
+    "address": "Près la Pharmacie De L'ESSEC",
+    "restaurant_image": "https://lh5.googleusercontent.com/p/AF1QipPlQIyOZf_jjDnHAuWjQUGjFPB3Xs2UhsdpIxMN=w156-h96-p-k-no",
+    "restaurant_description": "Fast-food",
+    "avg_rating": 4,
+    "reviews": [
+      {"user_name": "daniel", "comment": "Very Good.", "rating": 5 },
+      {"user_name": "max", "comment": "Good.", "rating": 3 },
+      {"user_name": "kate", "comment": "Good.", "rating": 4 }
+    ],
+    "isReviewsOpen":false
+  },
+  {
+    "id": "50fa95e8e4b05d9123d32adc",
+    "position": [4.054399894366197, 9.737052042253522],
+    "restaurant_name": "Restaurant le Campus",
+    "address": "Cité CICAM",
+    "restaurant_image": "https://images.unsplash.com/photo-1580220277977-c5f99f90e0ef?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fHJlc3RhdXJhbnQlMjBzZW5lZ2FsYWlzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60",
+    "restaurant_description": "Restaurant africain.",
+    "avg_rating": 4,
+    "reviews": [
+      {"user_name": "sam", "comment": "Very Good.", "rating": 5 },
+      {"user_name": "xander", "comment": "Good.", "rating": 3 },
+      {"user_name": "dean", "comment": "Good.", "rating": 4 }
+    ],
+    "isReviewsOpen":false
+  },
+  {
+    "id": "50125854e4b0c8f1eced4cfe",
+    "position": [4.055216177822392, 9.730313614647788],
+    "restaurant_name": "Boulangerie Royale",
+    "address": "Face Paroisse Christ-Roi BP cité-sic",
+    "restaurant_image": "https://lh5.googleusercontent.com/p/AF1QipOeHsFcT0NAKkvG-uMt1cRmwCkzeQyXTjUvDb1Y=w408-h725-k-no",
+    "restaurant_description": "Boulangeries",
+    "avg_rating": 2.5,
+    "reviews": [
+      {"user_name": "bill", "comment": "Very good.", "rating": 3 },
+      {"user_name": "donald", "comment": "Good.", "rating": 2 }
+    ],
+    "isReviewsOpen":false
+  },
+  {
+    "id": 5,
+    "position": [4.05587, 9.73715],
+    "restaurant_name": "HALAL Tchop",
+    "address": "Situé vers le Stade Cicam",
+    "restaurant_image": "https://lh5.googleusercontent.com/p/AF1QipOn1Vg2soAzioubUkUvikotvK0MJEe6q2z7x83E=w408-h839-k-no",
+    "restaurant_description": "Restaurant Sénégalais.",
+    "avg_rating": 4,
+    "reviews": [
+      {"user_name": "daniel", "comment": "Very Good. Cool place to visit.", "rating": 5 },
+      {"user_name": "max", "comment": "Good.", "rating": 3 },
+      {"user_name": "kate", "comment": "Good.", "rating": 4 }
+    ],
+    "isReviewsOpen":false
+  },
+  {
+    "id": "4fb94260e4b046114b62e9cf",
+    "position": [4.055229338734701, 9.730370431531208],
+    "restaurant_name": "Boulangerie Du Campus",
+    "address": "Face entrée principale du Campus 1.",
+    "restaurant_image": "https://lh5.googleusercontent.com/p/AF1QipPgAVAHIcPa48doMo2BrR3l05WXAK33Yi54tTMf=w408-h544-k-no",
+    "restaurant_description": "Boulangeries.",
+    "avg_rating": 2,
+    "reviews": [
+      {"user_name": "yves", "comment": "Very good.", "rating": 1 },
+      {"user_name": "damian", "comment": "Good.", "rating": 3 }
+    ],
+    "isReviewsOpen":false
+  },
+  {
+    "id": "50a92609e4b0740a18b15108",
+    "position": [4.066541968247261, 9.726269170353332],
+    "restaurant_name": "Boulangerie De La Paix",
+    "address": "Bepanda.",
+    "restaurant_image": "https://lh5.googleusercontent.com/p/AF1QipMBgzPlqUGQU03RuTgQPObK6fzeiJQtH0-8ulzM=w408-h544-k-no",
+    "restaurant_description": "Boulangeries",
+    "avg_rating": 2,
+    "reviews": [
+      {"user_name": "donell", "comment": "Very good.", "rating": 1 },
+      {"user_name": "damian", "comment": "Good.", "rating": 3 }
+    ],
+    "isReviewsOpen":false
+  },
+  {
+    "id": "52f40f0e498ede6e9ad3ab57",
+    "position": [4.049283136689607, 9.73073821085351],
+    "restaurant_name": "Le Grand Saphir",
+    "address": "Cité-sic, Belle Hollandaise",
+    "restaurant_image": "https://lh5.googleusercontent.com/p/AF1QipOxNADWnlM_2Uq5DVokme2Ss7V4FRuZOpxqcVQf=w408-h544-k-no",
+    "restaurant_description": "Snack",
+    "avg_rating": 3,
+    "reviews": [
+      {"user_name": "donell", "comment": "Very good.", "rating": 3 },
+      {"user_name": "damian", "comment": "Good.", "rating": 3 }
+    ],
+    "isReviewsOpen":false
+  },
+  {
+    "id": "510ea14de4b0ec5ccebd6957",
+    "position": [4.050904730377669, 9.739546340378741],
+    "restaurant_name": "Rotisserie Dorsi",
+    "address": "Cité-sic, Belle Hollandaise",
+    "restaurant_image": "https://lh5.googleusercontent.com/p/AF1QipMZ01DCTwddPnbbvYeMHD8YfMxoaqC6aj6jM4kq=w408-h306-k-no",
+    "restaurant_description": "Restaurant spécialisé dans le poulet frit.",
+    "avg_rating": 5,
+    "reviews": [
+      {"user_name": "donell", "comment": "Very good.", "rating": 5 },
+      {"user_name": "damian", "comment": "Good.", "rating": 5 }
+    ],
+    "isReviewsOpen":false
+  },
+  {
+    "id": "56aba048498e98f30b6589ec",
+    "position": [4.0568438, 9.747236],
+    "restaurant_name": "Target Point",
+    "address": "Ndogbong",
+    "restaurant_image": "https://lh5.googleusercontent.com/p/AF1QipOEjzodyjDdOOQmcaC4Uctt79h35xbdvdIYBpar=w408-h306-k-no",
+    "restaurant_description": "Restaurants africains.",
+    "avg_rating": 5,
+    "reviews": [
+      {"user_name": "donell", "comment": "Very good.", "rating": 5 },
+      {"user_name": "damian", "comment": "Good.", "rating": 5 }
+    ],
+    "isReviewsOpen":false
+  }
+]
