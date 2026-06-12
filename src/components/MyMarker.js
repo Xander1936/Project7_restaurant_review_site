@@ -7,7 +7,7 @@ export default function MyMarker(props) {
   const LeafIcon = Icon.extend({
     options: {},
   });
-
+  // Create the blue and red Icon for the map
   const blueIcon = new LeafIcon({
       iconUrl:
         "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|abcdef&chf=a,s,ee00FFFF",
