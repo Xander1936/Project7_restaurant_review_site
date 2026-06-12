@@ -1,0 +1,1211 @@
+[
+      {
+        "id": "50fa95e8e4b05d9123d32adc",
+        "name": "Restaurant le Campus",
+        "contact": {},
+        "location": {
+          "address": "Cité CICAM",
+          "lat": 4.054399894366197,
+          "lng": 9.737052042253522,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.054399894366197,
+              "lng": 9.737052042253522
+            }
+          ],
+          "distance": 310,
+          "cc": "CM",
+          "city": "Douala",
+          "state": "Littoral",
+          "country": "Cameroun",
+          "contextLine": "Douala",
+          "contextGeoId": 9151314443491819971,
+          "formattedAddress": [
+            "<span itemprop=\"streetAddress\">Cit&eacute; CICAM</span>",
+            "<span itemprop=\"addressLocality\">Douala</span>"
+          ]
+        },
+        "canonicalUrl": "https://foursquare.com/v/restaurant-le-campus/50fa95e8e4b05d9123d32adc",
+        "canonicalPath": "/v/restaurant-le-campus/50fa95e8e4b05d9123d32adc",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d1c8941735",
+            "name": "Restaurant africain",
+            "pluralName": "Restaurants africains",
+            "shortName": "Africaine",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/african_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/african",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 1, "checkinsCount": 1 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4f9bfc45e4b0849ad015bb66",
+        "name": "Restaurant moderne africain",
+        "contact": {},
+        "location": {
+          "address": "Cite sic",
+          "lat": 4.055216177822392,
+          "lng": 9.730313614647788,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.055216177822392,
+              "lng": 9.730313614647788
+            }
+          ],
+          "distance": 471,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": 9151314444128061140,
+          "formattedAddress": [
+            "<span itemprop=\"streetAddress\">Cite sic</span>"
+          ]
+        },
+        "canonicalUrl": "https://foursquare.com/v/restaurant-moderne-africain/4f9bfc45e4b0849ad015bb66",
+        "canonicalPath": "/v/restaurant-moderne-africain/4f9bfc45e4b0849ad015bb66",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d1c8941735",
+            "name": "Restaurant africain",
+            "pluralName": "Restaurants africains",
+            "shortName": "Africaine",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/african_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/african",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 1, "usersCount": 8, "checkinsCount": 39 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4fb94260e4b046114b62e9cf",
+        "name": "Boulangerie Du Campus",
+        "contact": {},
+        "location": {
+          "lat": 4.055229338734701,
+          "lng": 9.730370431531208,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.055229338734701,
+              "lng": 9.730370431531208
+            }
+          ],
+          "distance": 465,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": -452812505,
+          "formattedAddress": [""]
+        },
+        "canonicalUrl": "https://foursquare.com/v/boulangerie-du-campus/4fb94260e4b046114b62e9cf",
+        "canonicalPath": "/v/boulangerie-du-campus/4fb94260e4b046114b62e9cf",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d16a941735",
+            "name": "Boulangerie",
+            "pluralName": "Boulangeries",
+            "shortName": "Boulangerie",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/bakery_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/bakery",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 1, "usersCount": 13, "checkinsCount": 145 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "52b6468d498e8a763956bdb8",
+        "name": "DorsiClub",
+        "contact": {},
+        "location": {
+          "lat": 4.057510693914393,
+          "lng": 9.721228854831821,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.057510693914393,
+              "lng": 9.721228854831821
+            }
+          ],
+          "distance": 1510,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": -84436481,
+          "formattedAddress": [""]
+        },
+        "canonicalUrl": "https://foursquare.com/v/dorsiclub/52b6468d498e8a763956bdb8",
+        "canonicalPath": "/v/dorsiclub/52b6468d498e8a763956bdb8",
+        "categories": [
+          {
+            "id": "4d4ae6fc7a7b7dea34424761",
+            "name": "Restaurant spécialisé dans le poulet frit",
+            "pluralName": "Restaurants spécialisés dans le poulet frit",
+            "shortName": "Poulet frit",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/friedchicken_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/friedchicken",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 7, "checkinsCount": 12 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "50125854e4b0c8f1eced4cfe",
+        "name": "Boulangerie Royale",
+        "contact": {},
+        "location": {
+          "lat": 4.055216177822392,
+          "lng": 9.730313614647788,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.055216177822392,
+              "lng": 9.730313614647788
+            }
+          ],
+          "distance": 471,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": -754388140,
+          "formattedAddress": [""]
+        },
+        "canonicalUrl": "https://foursquare.com/v/boulangerie-royale/50125854e4b0c8f1eced4cfe",
+        "canonicalPath": "/v/boulangerie-royale/50125854e4b0c8f1eced4cfe",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d16a941735",
+            "name": "Boulangerie",
+            "pluralName": "Boulangeries",
+            "shortName": "Boulangerie",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/bakery_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/bakery",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 5, "checkinsCount": 22 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "5ac80d2d9de23b1e842094f0",
+        "name": "The Pepper Vip",
+        "contact": {},
+        "location": {
+          "address": "Antenne Kotto",
+          "crossStreet": "en face Pharmacie de Kotti",
+          "lat": 4.0661993,
+          "lng": 9.728481,
+          "labeledLatLngs": [
+            { "label": "display", "lat": 4.0661993, "lng": 9.728481 }
+          ],
+          "distance": 1522,
+          "cc": "CM",
+          "city": "Douala",
+          "state": "Littoral",
+          "country": "Cameroun",
+          "contextLine": "Douala",
+          "contextGeoId": -1216326085,
+          "formattedAddress": [
+            "<span itemprop=\"streetAddress\">Antenne Kotto</span> (en face Pharmacie de Kotti)",
+            "<span itemprop=\"addressLocality\">Douala</span>"
+          ]
+        },
+        "canonicalUrl": "https://foursquare.com/v/the-pepper-vip/5ac80d2d9de23b1e842094f0",
+        "canonicalPath": "/v/the-pepper-vip/5ac80d2d9de23b1e842094f0",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d1c7941735",
+            "name": "Snack",
+            "pluralName": "Snacks",
+            "shortName": "Snacks",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/snacks_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/default",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 3, "checkinsCount": 10 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "56bdf65a498ebf522c03fa87",
+        "name": "Zaira (Restaurant Sénégalais)",
+        "contact": {},
+        "location": {
+          "address": "Près la Pharmacie De L'ESSEC",
+          "lat": 4.055577,
+          "lng": 9.730292,
+          "labeledLatLngs": [
+            { "label": "display", "lat": 4.055577, "lng": 9.730292 }
+          ],
+          "distance": 488,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": -525743257,
+          "formattedAddress": [
+            "<span itemprop=\"streetAddress\">Pr&egrave;s la Pharmacie De L&#39;ESSEC</span>"
+          ]
+        },
+        "canonicalUrl": "https://foursquare.com/v/zaira-restaurant-s%C3%A9n%C3%A9galais/56bdf65a498ebf522c03fa87",
+        "canonicalPath": "/v/zaira-restaurant-s%C3%A9n%C3%A9galais/56bdf65a498ebf522c03fa87",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d16e941735",
+            "name": "Fast-food",
+            "pluralName": "Fast-foods",
+            "shortName": "Fast-food",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/fastfood",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 2, "checkinsCount": 2 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "50a92609e4b0740a18b15108",
+        "name": "Boulangerie De La Paix",
+        "contact": {},
+        "location": {
+          "address": "Bepanda",
+          "lat": 4.066541968247261,
+          "lng": 9.726269170353332,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.066541968247261,
+              "lng": 9.726269170353332
+            }
+          ],
+          "distance": 1674,
+          "cc": "CM",
+          "city": "Douala",
+          "state": "Littoral",
+          "country": "Cameroun",
+          "contextLine": "Douala",
+          "contextGeoId": 9151314443640819331,
+          "formattedAddress": [
+            "<span itemprop=\"streetAddress\">Bepanda</span>",
+            "<span itemprop=\"addressLocality\">Douala</span>"
+          ]
+        },
+        "canonicalUrl": "https://foursquare.com/v/boulangerie-de-la-paix/50a92609e4b0740a18b15108",
+        "canonicalPath": "/v/boulangerie-de-la-paix/50a92609e4b0740a18b15108",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d16a941735",
+            "name": "Boulangerie",
+            "pluralName": "Boulangeries",
+            "shortName": "Boulangerie",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/bakery_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/bakery",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 22, "checkinsCount": 201 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "52f40f0e498ede6e9ad3ab57",
+        "name": "Le Grand saphir",
+        "contact": {},
+        "location": {
+          "address": "Cité-sic, Belle Hollandaise",
+          "lat": 4.049283136689607,
+          "lng": 9.73073821085351,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.049283136689607,
+              "lng": 9.73073821085351
+            }
+          ],
+          "distance": 642,
+          "cc": "CM",
+          "city": "Douala",
+          "state": "Littoral",
+          "country": "Cameroun",
+          "contextLine": "Douala",
+          "contextGeoId": -396942704,
+          "formattedAddress": [
+            "<span itemprop=\"streetAddress\">Cit&eacute;-sic, Belle Hollandaise</span>",
+            "<span itemprop=\"addressLocality\">Douala</span>"
+          ]
+        },
+        "canonicalUrl": "https://foursquare.com/v/le-grand-saphir/52f40f0e498ede6e9ad3ab57",
+        "canonicalPath": "/v/le-grand-saphir/52f40f0e498ede6e9ad3ab57",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d1c7941735",
+            "name": "Snack",
+            "pluralName": "Snacks",
+            "shortName": "Snacks",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/snacks_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/default",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 6, "checkinsCount": 56 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "510ea14de4b0ec5ccebd6957",
+        "name": "Rotisserie Dorsi",
+        "contact": {},
+        "location": {
+          "lat": 4.050904730377669,
+          "lng": 9.739546340378741,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.050904730377669,
+              "lng": 9.739546340378741
+            }
+          ],
+          "distance": 664,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": 9151314443467525562,
+          "formattedAddress": [""]
+        },
+        "canonicalUrl": "https://foursquare.com/v/rotisserie-dorsi/510ea14de4b0ec5ccebd6957",
+        "canonicalPath": "/v/rotisserie-dorsi/510ea14de4b0ec5ccebd6957",
+        "categories": [
+          {
+            "id": "4d4ae6fc7a7b7dea34424761",
+            "name": "Restaurant spécialisé dans le poulet frit",
+            "pluralName": "Restaurants spécialisés dans le poulet frit",
+            "shortName": "Poulet frit",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/friedchicken_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/friedchicken",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 9, "checkinsCount": 15 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "56aba048498e98f30b6589ec",
+        "name": "Target Point",
+        "contact": {},
+        "location": {
+          "address": "Ndogbong",
+          "lat": 4.0568438,
+          "lng": 9.747236,
+          "labeledLatLngs": [
+            { "label": "display", "lat": 4.0568438, "lng": 9.747236 }
+          ],
+          "distance": 1473,
+          "cc": "CM",
+          "city": "Douala",
+          "state": "Littoral",
+          "country": "Cameroun",
+          "contextLine": "Douala",
+          "contextGeoId": -1982386454,
+          "formattedAddress": [
+            "<span itemprop=\"streetAddress\">Ndogbong</span>",
+            "<span itemprop=\"addressLocality\">Douala</span>"
+          ]
+        },
+        "canonicalUrl": "https://foursquare.com/v/target-point/56aba048498e98f30b6589ec",
+        "canonicalPath": "/v/target-point/56aba048498e98f30b6589ec",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d1c8941735",
+            "name": "Restaurant africain",
+            "pluralName": "Restaurants africains",
+            "shortName": "Africaine",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/african_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/african",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 4, "checkinsCount": 4 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "58d054dea6118c7230dda79d",
+        "name": "Boulangerie SAKER Bassa",
+        "contact": {},
+        "location": {
+          "lat": 4.036701,
+          "lng": 9.74147,
+          "labeledLatLngs": [
+            { "label": "display", "lat": 4.036701, "lng": 9.74147 }
+          ],
+          "distance": 2064,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": -615513859,
+          "formattedAddress": [""]
+        },
+        "canonicalUrl": "https://foursquare.com/v/boulangerie-saker-bassa/58d054dea6118c7230dda79d",
+        "canonicalPath": "/v/boulangerie-saker-bassa/58d054dea6118c7230dda79d",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d16a941735",
+            "name": "Boulangerie",
+            "pluralName": "Boulangeries",
+            "shortName": "Boulangerie",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/bakery_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/bakery",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 4, "checkinsCount": 14 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "528e117b11d2e60fddf817df",
+        "name": "Restaurant Barack Obama / Boulangerie",
+        "contact": {},
+        "location": {
+          "lat": 4.037183589285714,
+          "lng": 9.7261795625,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.037183589285714,
+              "lng": 9.7261795625
+            }
+          ],
+          "distance": 2060,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": 9151314443566629549,
+          "formattedAddress": [""]
+        },
+        "canonicalUrl": "https://foursquare.com/v/restaurant-barack-obama--boulangerie/528e117b11d2e60fddf817df",
+        "canonicalPath": "/v/restaurant-barack-obama--boulangerie/528e117b11d2e60fddf817df",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d1c8941735",
+            "name": "Restaurant africain",
+            "pluralName": "Restaurants africains",
+            "shortName": "Africaine",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/african_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/african",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 4, "checkinsCount": 5 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4fb7a4fce4b01fc5326f31f0",
+        "name": "Boulangerie La Brioche D'or IUT Ndogbong",
+        "contact": {},
+        "location": {
+          "lat": 4.05609,
+          "lng": 9.748251,
+          "labeledLatLngs": [
+            { "label": "display", "lat": 4.05609, "lng": 9.748251 }
+          ],
+          "distance": 1567,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": -1623949787,
+          "formattedAddress": [""]
+        },
+        "canonicalUrl": "https://foursquare.com/v/boulangerie-la-brioche-dor-iut-ndogbong/4fb7a4fce4b01fc5326f31f0",
+        "canonicalPath": "/v/boulangerie-la-brioche-dor-iut-ndogbong/4fb7a4fce4b01fc5326f31f0",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d16a941735",
+            "name": "Boulangerie",
+            "pluralName": "Boulangeries",
+            "shortName": "Boulangerie",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/bakery_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/bakery",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 4, "checkinsCount": 7 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "5ad6409f805e3f1213ce0fb9",
+        "name": "Boulangerie SAKER CCC",
+        "contact": {},
+        "location": {
+          "address": "Entre CCC et tunel ndokoti",
+          "lat": 4.03913,
+          "lng": 9.74177,
+          "labeledLatLngs": [
+            { "label": "display", "lat": 4.03913, "lng": 9.74177 }
+          ],
+          "distance": 1832,
+          "postalCode": "237",
+          "cc": "CM",
+          "city": "Douala",
+          "state": "Littoral",
+          "country": "Cameroun",
+          "contextLine": "Douala",
+          "contextGeoId": -2049523336,
+          "formattedAddress": [
+            "<span itemprop=\"streetAddress\">Entre CCC et tunel ndokoti</span>",
+            "<span itemprop=\"addressLocality\">Douala</span> <span itemprop=\"postalCode\">237</span>"
+          ]
+        },
+        "canonicalUrl": "https://foursquare.com/v/boulangerie-saker-ccc/5ad6409f805e3f1213ce0fb9",
+        "canonicalPath": "/v/boulangerie-saker-ccc/5ad6409f805e3f1213ce0fb9",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d16a941735",
+            "name": "Boulangerie",
+            "pluralName": "Boulangeries",
+            "shortName": "Boulangerie",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/bakery_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/bakery",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 2, "checkinsCount": 2 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "55e0b015498ef8656593b652",
+        "name": "Boulangerie Pâtisserie Champion NDOKOTI",
+        "contact": {},
+        "location": {
+          "lat": 4.04374486910639,
+          "lng": 9.741337475030189,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.04374486910639,
+              "lng": 9.741337475030189
+            }
+          ],
+          "distance": 1365,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": 9151314443647462564,
+          "formattedAddress": [""]
+        },
+        "canonicalUrl": "https://foursquare.com/v/boulangerie-p%C3%A2tisserie-champion-ndokoti/55e0b015498ef8656593b652",
+        "canonicalPath": "/v/boulangerie-p%C3%A2tisserie-champion-ndokoti/55e0b015498ef8656593b652",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d16a941735",
+            "name": "Boulangerie",
+            "pluralName": "Boulangeries",
+            "shortName": "Boulangerie",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/bakery_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/bakery",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 6, "checkinsCount": 9 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "55a40a01498e890addf972c3",
+        "name": "Le Grand Forum",
+        "contact": {},
+        "location": {
+          "lat": 4.056230068206787,
+          "lng": 9.738018989562988,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.056230068206787,
+              "lng": 9.738018989562988
+            }
+          ],
+          "distance": 490,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": 9151314443629516968,
+          "formattedAddress": [""]
+        },
+        "canonicalUrl": "https://foursquare.com/v/le-grand-forum/55a40a01498e890addf972c3",
+        "canonicalPath": "/v/le-grand-forum/55a40a01498e890addf972c3",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d155941735",
+            "name": "Gastro-pub",
+            "pluralName": "Gastro-pubs",
+            "shortName": "Gastro-pub",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/gastropub_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/default",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 1, "checkinsCount": 1 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "5557a31f498ea9871107e45d",
+        "name": "Boulangerie Joanes",
+        "contact": {},
+        "location": {
+          "address": "Pk8",
+          "lat": 4.049965466093675,
+          "lng": 9.738392194638775,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.049965466093675,
+              "lng": 9.738392194638775
+            }
+          ],
+          "distance": 623,
+          "cc": "CM",
+          "city": "Douala",
+          "state": "Littoral",
+          "country": "Cameroun",
+          "contextLine": "Douala",
+          "contextGeoId": 9151314444235139397,
+          "formattedAddress": [
+            "<span itemprop=\"streetAddress\">Pk8</span>",
+            "<span itemprop=\"addressLocality\">Douala</span>"
+          ]
+        },
+        "canonicalUrl": "https://foursquare.com/v/boulangerie-joanes/5557a31f498ea9871107e45d",
+        "canonicalPath": "/v/boulangerie-joanes/5557a31f498ea9871107e45d",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d16a941735",
+            "name": "Boulangerie",
+            "pluralName": "Boulangeries",
+            "shortName": "Boulangerie",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/bakery_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/bakery",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 1, "checkinsCount": 2 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "5026b5c4e4b0fe4231c2c06c",
+        "name": "Restaurant Alpha",
+        "contact": {},
+        "location": {
+          "lat": 4.05517790680177,
+          "lng": 9.73022107473168,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.05517790680177,
+              "lng": 9.73022107473168
+            }
+          ],
+          "distance": 479,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": 9151314443879359079,
+          "formattedAddress": [""]
+        },
+        "canonicalUrl": "https://foursquare.com/v/restaurant-alpha/5026b5c4e4b0fe4231c2c06c",
+        "canonicalPath": "/v/restaurant-alpha/5026b5c4e4b0fe4231c2c06c",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d1c8941735",
+            "name": "Restaurant africain",
+            "pluralName": "Restaurants africains",
+            "shortName": "Africaine",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/african_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/african",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 3, "checkinsCount": 34 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "5819e5877d7fb779f38a65ea",
+        "name": "Resto Sénégalais LE TOUBA",
+        "contact": {},
+        "location": {
+          "address": "Ndokoti",
+          "lat": 4.044308,
+          "lng": 9.740412,
+          "labeledLatLngs": [
+            { "label": "display", "lat": 4.044308, "lng": 9.740412 }
+          ],
+          "distance": 1256,
+          "cc": "CM",
+          "city": "Douala",
+          "state": "Littoral",
+          "country": "Cameroun",
+          "contextLine": "Douala",
+          "contextGeoId": 9151314443545728694,
+          "formattedAddress": [
+            "<span itemprop=\"streetAddress\">Ndokoti</span>",
+            "<span itemprop=\"addressLocality\">Douala</span>"
+          ]
+        },
+        "canonicalUrl": "https://foursquare.com/v/resto-s%C3%A9n%C3%A9galais-le-touba/5819e5877d7fb779f38a65ea",
+        "canonicalPath": "/v/resto-s%C3%A9n%C3%A9galais-le-touba/5819e5877d7fb779f38a65ea",
+        "categories": [
+          {
+            "id": "5283c7b4e4b094cb91ec88d8",
+            "name": "Restaurant de Döner kebab",
+            "pluralName": "Restaurants de Döner kebab",
+            "shortName": "Döner kebab",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/turkish_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/default",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 1, "checkinsCount": 1 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "588a5b9f26a9530a83d6592b",
+        "name": "Boulangerie Pâtisserie MADO",
+        "contact": {},
+        "location": {
+          "address": "Bepanda Face 7 ème",
+          "lat": 4.0584807,
+          "lng": 9.727142,
+          "labeledLatLngs": [
+            { "label": "display", "lat": 4.0584807, "lng": 9.727142 }
+          ],
+          "distance": 951,
+          "cc": "CM",
+          "city": "Douala",
+          "state": "Littoral",
+          "country": "Cameroun",
+          "contextLine": "Douala",
+          "contextGeoId": -1782160535,
+          "formattedAddress": [
+            "<span itemprop=\"streetAddress\">Bepanda Face 7 &egrave;me</span>",
+            "<span itemprop=\"addressLocality\">Douala</span>"
+          ]
+        },
+        "canonicalUrl": "https://foursquare.com/v/boulangerie-p%C3%A2tisserie-mado/588a5b9f26a9530a83d6592b",
+        "canonicalPath": "/v/boulangerie-p%C3%A2tisserie-mado/588a5b9f26a9530a83d6592b",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d16a941735",
+            "name": "Boulangerie",
+            "pluralName": "Boulangeries",
+            "shortName": "Boulangerie",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/bakery_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/bakery",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 1, "checkinsCount": 1 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "53668ab6498e82a0e4e167d8",
+        "name": "WhatsApp Cafe",
+        "contact": {},
+        "location": {
+          "lat": 4.054164,
+          "lng": 9.715044,
+          "labeledLatLngs": [
+            { "label": "display", "lat": 4.054164, "lng": 9.715044 }
+          ],
+          "distance": 2140,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": 9151314444854501797,
+          "formattedAddress": [""]
+        },
+        "canonicalUrl": "https://foursquare.com/v/whatsapp-cafe/53668ab6498e82a0e4e167d8",
+        "canonicalPath": "/v/whatsapp-cafe/53668ab6498e82a0e4e167d8",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d16d941735",
+            "name": "Café",
+            "pluralName": "Cafés",
+            "shortName": "Café",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/cafe_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/cafe",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 2, "checkinsCount": 2 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "529b14f511d2c01ef2ec7a0c",
+        "name": "La Croissanterie, Ndokoti",
+        "contact": {},
+        "location": {
+          "lat": 4.053299518094034,
+          "lng": 9.734902632617905,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.053299518094034,
+              "lng": 9.734902632617905
+            }
+          ],
+          "distance": 86,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": -160180483,
+          "formattedAddress": [""]
+        },
+        "canonicalUrl": "https://foursquare.com/v/la-croissanterie-ndokoti/529b14f511d2c01ef2ec7a0c",
+        "canonicalPath": "/v/la-croissanterie-ndokoti/529b14f511d2c01ef2ec7a0c",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d16a941735",
+            "name": "Boulangerie",
+            "pluralName": "Boulangeries",
+            "shortName": "Boulangerie",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/bakery_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/bakery",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 2, "checkinsCount": 21 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "56e9a46d498ed08ecd166e6e",
+        "name": "BONGA JUICE",
+        "contact": {},
+        "location": {
+          "address": "Ndogbong",
+          "crossStreet": "Face Mobil Guinness",
+          "lat": 4.048314699258205,
+          "lng": 9.739584449232547,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.048314699258205,
+              "lng": 9.739584449232547
+            }
+          ],
+          "distance": 846,
+          "cc": "CM",
+          "city": "Douala",
+          "state": "Littoral",
+          "country": "Cameroun",
+          "contextLine": "Douala",
+          "contextGeoId": -108815957,
+          "formattedAddress": [
+            "<span itemprop=\"streetAddress\">Ndogbong</span> (Face Mobil Guinness)",
+            "<span itemprop=\"addressLocality\">Douala</span>"
+          ]
+        },
+        "canonicalUrl": "https://foursquare.com/v/bonga-juice/56e9a46d498ed08ecd166e6e",
+        "canonicalPath": "/v/bonga-juice/56e9a46d498ed08ecd166e6e",
+        "categories": [
+          {
+            "id": "52e81612bcbc57f1066b79f1",
+            "name": "Bistro",
+            "pluralName": "Bistros",
+            "shortName": "Bistro",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/default_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/default",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 0, "usersCount": 11, "checkinsCount": 16 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      },
+      {
+        "id": "4f36601de4b0948a80dfd67b",
+        "name": "COAF",
+        "contact": {},
+        "location": {
+          "lat": 4.060402576317279,
+          "lng": 9.712562261651504,
+          "labeledLatLngs": [
+            {
+              "label": "display",
+              "lat": 4.060402576317279,
+              "lng": 9.712562261651504
+            }
+          ],
+          "distance": 2524,
+          "cc": "CM",
+          "country": "Cameroun",
+          "contextLine": "",
+          "contextGeoId": -1002806909,
+          "formattedAddress": [""]
+        },
+        "canonicalUrl": "https://foursquare.com/v/coaf/4f36601de4b0948a80dfd67b",
+        "canonicalPath": "/v/coaf/4f36601de4b0948a80dfd67b",
+        "categories": [
+          {
+            "id": "4bf58dd8d48988d16a941735",
+            "name": "Boulangerie",
+            "pluralName": "Boulangeries",
+            "shortName": "Boulangerie",
+            "icon": {
+              "prefix": "https://ss3.4sqi.net/img/categories_v2/food/bakery_",
+              "mapPrefix": "https://ss3.4sqi.net/img/categories_map/food/bakery",
+              "suffix": ".png"
+            },
+            "primary": true
+          }
+        ],
+        "verified": false,
+        "stats": { "tipCount": 9, "usersCount": 75, "checkinsCount": 396 },
+        "allowMenuUrlEdit": true,
+        "beenHere": { "lastCheckinExpiredAt": 0 },
+        "specials": { "count": 0, "items": [] },
+        "hereNow": { "count": 0, "summary": "Personne ici", "groups": [] },
+        "referralId": "v-1621777088",
+        "venueChains": [],
+        "hasPerk": false
+      }
+    ]
+  
