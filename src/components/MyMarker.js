@@ -3,7 +3,7 @@ import { Icon } from "leaflet";
 import { Marker, Popup } from "react-leaflet";
 
 export default function MyMarker(props) {
-  //  Create the Icon
+  //  Create the Icon on initialization
   const LeafIcon = Icon.extend({
     options: {},
   });
