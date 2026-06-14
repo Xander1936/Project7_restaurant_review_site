@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useMemo } from "react";
 import { MapContainer, TileLayer, MapConsumer } from "react-leaflet";
 import L from "leaflet";
 import MyMarker from "./MyMarker";
@@ -21,24 +21,6 @@ const icon = L.icon({
   shadowSize: [41, 41],
 });
 
-// Render Marker on the Leaflet Map
-function renderMarkers(venues) {
-  return (
-    <div>
-      {venues.map((r) => {
-        return (
-          <MyMarker
-            key={Date.now() + r.restaurant_name}
-            position={r.position}
-            restaurant_name={r.restaurant_name}
-            address={r.address}
-            image={r.restaurant_image}
-          />
-        );
-      })}
-    </div>
-  );
-}
 
 export default function Map({ restaurants, setRestaurants }) {
   // All the restaurant's State
@@ -91,6 +73,18 @@ export default function Map({ restaurants, setRestaurants }) {
   // Get Location function: catch the current position coordinates for the modal
   
   
+  const markers = useMemo(() => {
+    return restaurants.map((r) => (
+      <MyMarker
+        key={r.id + r.restaurant_name}
+        position={r.position}
+        restaurant_name={r.restaurant_name}
+        address={r.address}
+        image={r.restaurant_image}
+      />
+    ));
+  }, [restaurants]);
+
   return (
     <div>
       {/*Modal to enter and save the informations of the new restaurant
@@ -184,14 +178,14 @@ export default function Map({ restaurants, setRestaurants }) {
         />
 
         <MyMarker
-          key={Date.now()}
+          key={"center"}
           position={position}
           restaurant_name={"Center"}
           address={""}
           image={""}
           color={"red"}
         />
-        {renderMarkers(restaurants)}
+        {markers}
         {/*Click event to catch and set the new coordinates to the new restaurant on the Map*/}
         <MapConsumer>
           {(map) => {

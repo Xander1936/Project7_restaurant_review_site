@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useMemo } from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
@@ -54,54 +54,40 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
   const [name, setName] = useState("");
   const [rating, setRating] = useState("");
   const [body, setBody] = useState("");
+  const [searchRating, setSearchRating] = useState("");
 
   const inputRef = useRef();
   const textareaRef = useRef();
 
-  // NEW: keep original unfiltered list
-  const [originalRestaurants, setOriginalRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-
-  useEffect(() => {
-    // whenever parent provides a new restaurants array, reset both lists
-    setOriginalRestaurants(restaurants);
-    setFilteredRestaurants(restaurants);
-  }, [restaurants]);
-
-  const handleSearch = (e) => {
-    const value = e.target.value; // "", "1".."5"
-
-    if (value === "") {
-      setFilteredRestaurants(originalRestaurants);
-      return;
+  const filteredRestaurants = useMemo(() => {
+    if (searchRating === "") {
+      return restaurants;
     }
 
-    const v = Number(value);
-
-    const restos = originalRestaurants.filter((res) => {
+    const v = Number(searchRating);
+    return restaurants.filter((res) => {
       const avg = Number(res.avg_rating);
-
       if (v === 1) return avg >= 1 && avg < 2;
       if (v === 2) return avg >= 2 && avg < 3;
       if (v === 3) return avg >= 3 && avg < 4;
       if (v === 4) return avg >= 4 && avg < 5;
       if (v === 5) return avg === 5;
-
       return true;
     });
+  }, [restaurants, searchRating]);
 
-    setFilteredRestaurants(restos);
+  const handleSearch = (e) => {
+    setSearchRating(e.target.value);
   };
 
-  // Update comment / average in BOTH lists
+  // Update comment / average
   const handleSubmit = (e, filteredIndex) => {
     e.preventDefault();
 
-    // Map filtered index back to original by matching object reference
     const targetRestaurant = filteredRestaurants[filteredIndex];
     if (!targetRestaurant) return;
 
-    const updatedOriginal = originalRestaurants.map((r) => {
+    const updatedRestaurants = restaurants.map((r) => {
       if (r === targetRestaurant) {
         const next = { ...r, reviews: [...(r.reviews || [])] };
         const comment = { user_name: name, comment: body, rating: rating };
@@ -109,76 +95,32 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
 
         let ratingSum = 0;
         for (const rev of next.reviews) {
-          ratingSum += parseInt(rev.rating, 10);
+          ratingSum += Number(rev.rating);
         }
         next.avg_rating = (ratingSum / next.reviews.length).toFixed(1);
-
         return next;
       }
       return r;
     });
 
-    setOriginalRestaurants(updatedOriginal);
-    setRestaurants(updatedOriginal);
-
-    // Re-apply current filter by using current select value
-    const selectEl = document.getElementById("demo-customized-select-native");
-    const currentValue = selectEl ? selectEl.value : "";
-    if (currentValue === "") {
-      setFilteredRestaurants(updatedOriginal);
-    } else {
-      const v = Number(currentValue);
-      const restos = updatedOriginal.filter((res) => {
-        const avg = Number(res.avg_rating);
-        if (v === 1) return avg >= 1 && avg < 2;
-        if (v === 2) return avg >= 2 && avg < 3;
-        if (v === 3) return avg >= 3 && avg < 4;
-        if (v === 4) return avg >= 4 && avg < 5;
-        if (v === 5) return avg === 5;
-        return true;
-      });
-      setFilteredRestaurants(restos);
-    }
-
+    setRestaurants(updatedRestaurants);
     setName("");
-    setBody("");
     setRating("");
-    inputRef.current?.focus();
-    textareaRef.current?.focus();
+    setBody("");
   };
 
   const handleOpenReviews = (filteredIndex) => {
     const targetRestaurant = filteredRestaurants[filteredIndex];
     if (!targetRestaurant) return;
 
-    const updatedOriginal = originalRestaurants.map((r) => {
+    const updatedRestaurants = restaurants.map((r) => {
       if (r === targetRestaurant) {
         return { ...r, isReviewsOpen: !r.isReviewsOpen };
       }
       return r;
     });
 
-    setOriginalRestaurants(updatedOriginal);
-    setRestaurants(updatedOriginal);
-
-    // Keep filtered list in sync (re-derive based on current filter)
-    setFilteredRestaurants((prevFiltered) => {
-      // easiest: just filter again using current select value
-      const selectEl = document.getElementById("demo-customized-select-native");
-      const currentValue = selectEl ? selectEl.value : "";
-      if (currentValue === "") return updatedOriginal;
-
-      const v = Number(currentValue);
-      return updatedOriginal.filter((res) => {
-        const avg = Number(res.avg_rating);
-        if (v === 1) return avg >= 1 && avg < 2;
-        if (v === 2) return avg >= 2 && avg < 3;
-        if (v === 3) return avg >= 3 && avg < 4;
-        if (v === 4) return avg >= 4 && avg < 5;
-        if (v === 5) return avg === 5;
-        return true;
-      });
-    });
+    setRestaurants(updatedRestaurants);
   };
 
   return (

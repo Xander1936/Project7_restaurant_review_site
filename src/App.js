@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -85,6 +85,10 @@ export default function App() {
   const [restaurants, setRestaurants] = React.useState(restaurantsData);
   const [venues, setVenues] = React.useState([]);
   const [position, setPosition] = React.useState([4.05382, 9.73432]);
+
+  const allRestaurants = useMemo(() => {
+    return restaurants;
+  }, [restaurants]);
 
   //Get the venues filtering by position from the FourSquare Api
   useEffect(() => {
@@ -211,7 +215,7 @@ export default function App() {
         </div>
         <Divider />
         <MyRestaurants
-          restaurants={restaurants}
+          restaurants={allRestaurants}
           setRestaurants={setRestaurants}
         />
         <Divider />
@@ -222,7 +226,7 @@ export default function App() {
         })}
       >
         <div className={classes.drawerHeader} />
-        <Map restaurants={restaurants} setRestaurants={setRestaurants} />
+        <Map restaurants={allRestaurants} setRestaurants={setRestaurants} />
       </main>
     </div>
   );
