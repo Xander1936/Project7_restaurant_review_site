@@ -255,7 +255,7 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
                   onChange={(e) => setRating(e.target.value)}
                 />
 
-                <button>Add Comment</button>
+                <button style={{ marginTop: '10px' }} >Add Comment</button>
               </form>
 
               <div className="posts">

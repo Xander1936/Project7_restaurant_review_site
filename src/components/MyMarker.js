@@ -10,12 +10,21 @@ export default function MyMarker(props) {
   // Create the blue and red Icon for the map
   const blueIcon = new LeafIcon({
       iconUrl:
-        "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|abcdef&chf=a,s,ee00FFFF",
-      shadowUrl: "https://unpkg.com/leaflet@1.7/dist/images/marker-shadow.png",
+        "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png",
+      shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41],
     }),
-    redIcon =  new LeafIcon({
+    redIcon = new LeafIcon({
       iconUrl:
-        "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FF0000&chf=a,s,ee00FFFF",
+        "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
+      shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41],
     });
 
   return (
@@ -26,7 +35,7 @@ export default function MyMarker(props) {
       <Popup>
         <h3>{props.restaurant_name}</h3>
         <p>{props.address}</p>
-        <img src={props.restaurant_image} alt="" />
+        <img src={props.color === "blue" ? props.image : props.image} style={{width: "100%"}} alt="restaurant_image" />
       </Popup>
     </Marker>
   );

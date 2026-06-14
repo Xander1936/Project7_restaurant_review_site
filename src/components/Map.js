@@ -14,10 +14,11 @@ import TextField from "@material-ui/core/TextField";
 //Icon propertie's view for the map
 const icon = L.icon({
   iconSize: [25, 41],
-  iconAnchor: [10, 41],
-  popupAnchor: [2, -40],
-  iconUrl:
-    "https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|abcdef&chf=a,s,ee00FFFF",
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png",
+  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+  shadowSize: [41, 41],
 });
 
 // Render Marker on the Leaflet Map
