@@ -133,7 +133,18 @@ export default function App() {
       .then((response) => {
         setVenues(response.data.response.venues);
         let rests = [...restaurants];
+        const excludedNames = [
+          "Food Village Restaurant",
+          "Star Food",
+          "Cameroun Chine Rotisserie fast food",
+          "loic food",
+          "Go food",
+        ];
+
         for (let venue of response.data.response.venues) {
+          if (excludedNames.includes(venue.name)) {
+            continue;
+          }
           console.log("Shazam***", venue);
           let newRestaurant = {
             id: "",
