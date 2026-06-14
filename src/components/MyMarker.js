@@ -33,9 +33,15 @@ export default function MyMarker(props) {
       icon={props.color === "red" ? redIcon : blueIcon}
     >
       <Popup>
-        <h3>{props.restaurant_name}</h3>
-        <p>{props.address}</p>
-        <img src={props.color === "blue" ? props.image : props.image} style={{width: "100%"}} alt="restaurant_image" />
+        {props.color === "red" ? (
+          <h3>Center</h3>
+        ) : (
+          <>
+            <h3>{props.restaurant_name}</h3>
+            <p>{props.address}</p>
+            <img src={props.image} style={{width: "100%"}} alt="restaurant_image" />
+          </>
+        )}
       </Popup>
     </Marker>
   );
