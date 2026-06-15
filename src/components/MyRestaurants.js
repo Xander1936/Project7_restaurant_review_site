@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 import { red } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Divider from "@material-ui/core/Divider";
@@ -123,6 +124,14 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
     setRestaurants(updatedRestaurants);
   };
 
+  const deleteRestaurant = (filteredIndex) => {
+    const targetRestaurant = filteredRestaurants[filteredIndex];
+    if (!targetRestaurant) return;
+
+    const updatedRestaurants = restaurants.filter((r) => r !== targetRestaurant);
+    setRestaurants(updatedRestaurants);
+  };
+
   return (
     <div>
       <div style={{ textAlign: "center", paddingBottom: "10px" }}>
@@ -156,6 +165,14 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
             <h4 style={{ border: "2px", borderRadius: "1px" }}>
               Rating: {restaurant.avg_rating}
             </h4>
+
+            <IconButton
+              aria-label="delete"
+              onClick={() => deleteRestaurant(index)}
+              style={{ color: red[500] }}
+            >
+              <DeleteIcon />
+            </IconButton>
 
             <IconButton
               className={clsx(classes.expand, {
