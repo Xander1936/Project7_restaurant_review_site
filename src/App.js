@@ -46,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  title: {
+    flexGrow: 1,
+  },
   hide: {
     display: "none",
   },
@@ -253,7 +256,7 @@ export default function App() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h6" noWrap className={classes.title}>
             Restaurants Of Ange Raphael In Douala.
           </Typography>
           <div className={classes.search}>

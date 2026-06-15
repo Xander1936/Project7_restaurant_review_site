@@ -8,7 +8,10 @@ import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { red } from "@material-ui/core/colors";
+import StarIcon from "@material-ui/icons/Star";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
+import StarHalfIcon from "@material-ui/icons/StarHalf";
+import { red, yellow } from "@material-ui/core/colors";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Divider from "@material-ui/core/Divider";
 import "./MyRestaurants.css";
@@ -158,34 +161,46 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
           <CardMedia className={classes.media} image={restaurant.restaurant_image} />
           <CardContent>
             <h4>{restaurant.restaurant_name}</h4>
-            <p>{restaurant.restaurant_description}</p>
-          </CardContent>
-
-          <CardActions disableSpacing>
-            <h4 style={{ border: "2px", borderRadius: "1px" }}>
-              Rating: {restaurant.avg_rating}
-            </h4>
-
-            <IconButton
-              aria-label="delete"
-              onClick={() => deleteRestaurant(index)}
-              style={{ color: red[500] }}
-            >
-              <DeleteIcon />
-            </IconButton>
-
-            <IconButton
-              className={clsx(classes.expand, {
-                [classes.expandOpen]: restaurant.isReviewsOpen,
+            <p style={{ marginBottom: '8px' }}>{restaurant.restaurant_description}</p>
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+              {[...Array(5)].map((_, i) => {
+                const ratingValue = i + 1;
+                const avgRating = Number(restaurant.avg_rating);
+                if (avgRating >= ratingValue) {
+                  return <StarIcon key={i} style={{ color: yellow[700] }} />;
+                } else if (avgRating >= ratingValue - 0.5) {
+                  return <StarHalfIcon key={i} style={{ color: yellow[700] }} />;
+                } else {
+                  return <StarBorderIcon key={i} style={{ color: yellow[700] }} />;
+                }
               })}
-              onClick={() => handleOpenReviews(index)}
-              aria-expanded={restaurant.isReviewsOpen}
-              aria-label="show more"
-            >
-              <ExpandMoreIcon />
-            </IconButton>
-          </CardActions>
+              <h4 style={{ marginLeft: '10px', marginRight: '10px' }}>
+                {restaurant.avg_rating}
+              </h4>
+            </div>
 
+            <CardActions disableSpacing style={{ padding: 0 }}>
+              <IconButton
+                  aria-label="delete"
+                  onClick={() => deleteRestaurant(index)}
+                  style={{ color: red[500], padding: '8px 8px 8px 0' }}
+              >
+                <DeleteIcon />
+              </IconButton>
+
+              <IconButton
+                  className={clsx(classes.expand, {
+                    [classes.expandOpen]: restaurant.isReviewsOpen,
+                  })}
+                  onClick={() => handleOpenReviews(index)}
+                  aria-expanded={restaurant.isReviewsOpen}
+                  aria-label="show more"
+              >
+                <ExpandMoreIcon />
+              </IconButton>
+            </CardActions>
+          </CardContent>
+          
           <Collapse in={restaurant.isReviewsOpen} timeout="auto" unmountOnExit>
             <CardContent>
               <form onSubmit={(e) => handleSubmit(e, index)}>
