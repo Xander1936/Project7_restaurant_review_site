@@ -82,7 +82,14 @@ export default function App() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [restaurants, setRestaurants] = React.useState(restaurantsData);
+  const [restaurants, setRestaurants] = React.useState(() => {
+    const saved = localStorage.getItem("restaurants");
+    return saved ? JSON.parse(saved) : restaurantsData;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("restaurants", JSON.stringify(restaurants));
+  }, [restaurants]);
   const [venues, setVenues] = React.useState([]);
   const [position, setPosition] = React.useState([4.05382, 9.73432]);
 
@@ -149,6 +156,12 @@ export default function App() {
           if (excludedNames.includes(venue.name)) {
             continue;
           }
+
+          const isDuplicate = rests.some(r => r.restaurant_name === venue.name);
+          if (isDuplicate) {
+            continue;
+          }
+
           console.log("Shazam***", venue);
           let newRestaurant = {
             id: "",
