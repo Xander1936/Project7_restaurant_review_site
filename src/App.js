@@ -8,13 +8,18 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
+import InputBase from "@material-ui/core/InputBase";
 import MenuIcon from "@material-ui/icons/Menu";
+import SearchIcon from "@material-ui/icons/Search";
+import ClearIcon from "@material-ui/icons/Clear";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Map from "./components/Map";
 import MyRestaurants from "./components/MyRestaurants";
 import restaurantsData from "./components/restaurantsData.json";
 import axios from "axios";
+import { fade } from '@material-ui/core/styles';
+
 
 //import Fade from "@material-ui/core/Fade";
 
@@ -59,6 +64,43 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
     justifyContent: "flex-end",
   },
+  search: {
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(3),
+      width: "auto",
+    },
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  inputRoot: {
+    color: "inherit",
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "20ch",
+    },
+  },
 
   content: {
     flexGrow: 1,
@@ -92,10 +134,18 @@ export default function App() {
   }, [restaurants]);
   const [venues, setVenues] = React.useState([]);
   const [position, setPosition] = React.useState([4.05382, 9.73432]);
+  const [searchTerm, setSearchTerm] = React.useState("");
 
   const allRestaurants = useMemo(() => {
-    return restaurants;
-  }, [restaurants]);
+    if (!searchTerm) {
+      return restaurants;
+    }
+    return restaurants.filter((restaurant) =>
+      restaurant.restaurant_name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase())
+    );
+  }, [restaurants, searchTerm]);
 
   //Get the venues filtering by position from the FourSquare Api
   useEffect(() => {
@@ -206,6 +256,30 @@ export default function App() {
           <Typography variant="h6" noWrap>
             Restaurants Of Ange Raphael In Douala.
           </Typography>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ "aria-label": "search" }}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            {searchTerm && (
+              <IconButton
+                size="small"
+                color="inherit"
+                onClick={() => setSearchTerm("")}
+              >
+                <ClearIcon />
+              </IconButton>
+            )}
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
