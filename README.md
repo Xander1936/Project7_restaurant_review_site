@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Restaurant Reviews App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive web application built with React that allows users to discover, review, and manage restaurants on a map.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **Interactive Map:** View restaurant locations on a dynamic map powered by Leaflet.
+- **Restaurant Management:** 
+    - Browse a list of restaurants with images, descriptions, and ratings.
+    - Search for specific restaurants by name.
+    - Filter restaurants based on their average rating.
+    - Delete restaurants from the list.
+- **Reviews & Ratings:**
+    - View detailed reviews for each restaurant.
+    - Add new reviews with customer names and comments.
+    - Visual star rating system (full, half, and empty stars).
+- **Add New Restaurants:** Simply click on the map to add a new restaurant location with its details (name, address, description, etc.).
+- **Responsive UI:** Built with Material-UI for a modern and responsive user experience.
 
-### `yarn start`
+## 🛠️ Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Frontend Framework:** [React](https://reactjs.org/)
+- **UI Components:** [Material-UI (v4)](https://v4.material-ui.com/) & [MUI (v5)](https://mui.com/)
+- **Mapping Library:** [Leaflet](https://leafletjs.com/) & [React-Leaflet](https://react-leaflet.js.org/)
+- **Icons:** Material-UI Icons
+- **HTTP Client:** [Axios](https://axios-http.com/)
+- **Styling:** CSS & Emotion
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 📋 Prerequisites
 
-### `yarn test`
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v12 or higher recommended)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔧 Installation & Setup
 
-### `yarn build`
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd restaurant-reviews-app
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Start the development server:**
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Open your browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000) to see the app running.
 
-### `yarn eject`
+## 📖 Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **Viewing Restaurants:** The sidebar lists available restaurants. Clicking on a restaurant in the list or a marker on the map will show more details.
+- **Filtering:** Use the search bar at the top to find restaurants by name, or use the rating filter in the sidebar to narrow down results.
+- **Adding a Restaurant:** Click anywhere on the map. A dialog will appear asking for the restaurant's details. Fill them in and save to add it to the map and list.
+- **Adding a Review:** Expand a restaurant's card in the sidebar, fill out the review form, and submit.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🧪 Running Tests
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To run the available tests, use:
+```bash
+npm test
+# or
+yarn test
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 🏗️ Project Structure
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `src/components/`: Contains the main React components (Map, MyRestaurants, MyMarker, etc.).
+- `src/App.js`: The main entry point and layout of the application.
+- `public/`: Static assets and the main HTML file.
+- `src/components/restaurantsData.json`: Sample data for restaurants.
