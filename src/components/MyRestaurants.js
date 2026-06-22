@@ -52,25 +52,31 @@ const BootstrapInput = withStyles(() => ({
   },
 }))(InputBase);
 
+// Component to display and manage the list of restaurants in the sidebar
 export default function RecipeReviewCard({ restaurants, setRestaurants }) {
   const classes = useStyles();
 
+  // State for adding a new review to a restaurant
   const [name, setName] = useState("");
   const [rating, setRating] = useState("");
   const [body, setBody] = useState("");
+  
+  // State for filtering restaurants by rating in the sidebar
   const [searchRating, setSearchRating] = useState("");
 
   const inputRef = useRef();
   const textareaRef = useRef();
 
+  // Memoized filter for restaurants based on their average rating
   const filteredRestaurants = useMemo(() => {
-    if (searchRating === "") {
+    if (searchRating === "" || searchRating === "0") {
       return restaurants;
     }
 
     const v = Number(searchRating);
     return restaurants.filter((res) => {
       const avg = Number(res.avg_rating);
+      // Rating ranges for filtering
       if (v === 1) return avg >= 1 && avg < 2;
       if (v === 2) return avg >= 2 && avg < 3;
       if (v === 3) return avg >= 3 && avg < 4;
@@ -80,23 +86,32 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
     });
   }, [restaurants, searchRating]);
 
+  // Update searchRating state when user selects a different rating filter
   const handleSearch = (e) => {
     setSearchRating(e.target.value);
   };
 
-  // Handle new review submission
+  /**
+   * Handles submission of a new review for a specific restaurant.
+   * Recalculates the average rating for the restaurant.
+   */
   const handleSubmit = (e, restaurantId) => {
     e.preventDefault();
+    
+    // Validation: Require rating and name for reviews
+    if (!rating || !name) {
+      alert("Please provide a name and a rating.");
+      return;
+    }
 
     // Update the restaurants state immutably
     const updatedRestaurants = restaurants.map((r) => {
-      // If this is the restaurant we are reviewing
       if (r.id === restaurantId) {
         const next = { ...r, reviews: [...(r.reviews || [])] };
         const comment = { user_name: name, comment: body, rating: rating };
         next.reviews.push(comment);
 
-        // Recalculate average rating
+        // Recalculate average rating based on all reviews
         let ratingSum = 0;
         for (const rev of next.reviews) {
           ratingSum += Number(rev.rating);
@@ -114,6 +129,10 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
     setBody("");
   };
 
+  /**
+   * Toggles the visibility of reviews for a specific restaurant card.
+   * @param {string} restaurantId - The unique ID of the restaurant.
+   */
   const handleOpenReviews = (restaurantId) => {
     const updatedRestaurants = restaurants.map((r) => {
       if (r.id === restaurantId) {
@@ -125,9 +144,15 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
     setRestaurants(updatedRestaurants);
   };
 
+  /**
+   * Deletes a restaurant from the list.
+   * @param {string} restaurantId - The unique ID of the restaurant to remove.
+   */
   const deleteRestaurant = (restaurantId) => {
-    const updatedRestaurants = restaurants.filter((r) => r.id !== restaurantId);
-    setRestaurants(updatedRestaurants);
+    if (window.confirm("Are you sure you want to delete this restaurant?")) {
+      const updatedRestaurants = restaurants.filter((r) => r.id !== restaurantId);
+      setRestaurants(updatedRestaurants);
+    }
   };
 
   return (

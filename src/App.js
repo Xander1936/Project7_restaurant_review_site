@@ -123,28 +123,44 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Main application component that manages state and layout
 export default function App() {
   const classes = useStyles();
   const theme = useTheme();
+
+  // State for controlling the drawer (sidebar) visibility
   const [open, setOpen] = React.useState(false);
+
+  // State for storing the list of restaurants, initialized from localStorage or default data
   const [restaurants, setRestaurants] = React.useState(() => {
-    const saved = localStorage.getItem("restaurants");
-    return saved ? JSON.parse(saved) : restaurantsData;
+    try {
+      const saved = localStorage.getItem("restaurants");
+      return saved ? JSON.parse(saved) : restaurantsData;
+    } catch (e) {
+      console.error("Failed to parse restaurants from localStorage", e);
+      return restaurantsData;
+    }
   });
 
+  // Persist restaurants list to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("restaurants", JSON.stringify(restaurants));
   }, [restaurants]);
+
+  // State for venues fetched from Foursquare API
   const [venues, setVenues] = React.useState([]);
+
+  // State for the current map position [latitude, longitude]
   const [position, setPosition] = React.useState([4.05382, 9.73432]);
+
+  // State for the restaurant search/filter term
   const [searchTerm, setSearchTerm] = React.useState("");
 
+  // Memoized filter for restaurants based on the searchTerm
   const allRestaurants = useMemo(() => {
-    // Return all restaurants if search term is empty
     if (!searchTerm) {
       return restaurants;
     }
-    // Case-insensitive filtering by restaurant name
     return restaurants.filter((restaurant) =>
       restaurant.restaurant_name
         ?.toLowerCase()
@@ -152,47 +168,54 @@ export default function App() {
     );
   }, [restaurants, searchTerm]);
 
-  // Fetch venues from Foursquare whenever position changes
+  // Fetch Foursquare venues whenever the map position changes
   useEffect(() => {
-    if (position) {
+    if (position && Array.isArray(position) && position.length === 2) {
       getVenues(position);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [position]);
   
-  // Initialize location on mount
+  // Attempt to get user's location on initial mount
   useEffect(() => {
     getLocation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Request browser geolocation
+  // Use the browser's Geolocation API to find the user's coordinates
   function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (pos) => showPosition(pos),
-        (err) => console.warn("Geolocation error:", err.message)
+        (err) => console.warn("Geolocation access denied or error:", err.message)
       );
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
   }
 
-  // Update current position state
+  // Update position state with user's coordinates
   function showPosition(position) {
-    setPosition([position.coords.latitude, position.coords.longitude]);
+    if (position && position.coords) {
+      setPosition([position.coords.latitude, position.coords.longitude]);
+    }
   }
-  //Open the Drawer
+
+  // Open the sidebar drawer
   const handleDrawerOpen = () => {
     setOpen(true);
   };
 
-  //Close the Drawer
+  // Close the sidebar drawer
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  // Set the Four Square API parameters
-  // Using environment variables for security is recommended for production
+
+  /**
+   * Fetches nearby restaurants using Foursquare Places API v2.
+   * Filters out duplicates and specific excluded restaurant names.
+   * @param {Array} pos - Current latitude and longitude
+   */
   let getVenues = (pos) => {
     const endPoint = "https://api.foursquare.com/v2/venues/search?";
     const parameters = {
@@ -201,20 +224,22 @@ export default function App() {
       query: "food",
       v: "20210301",
       radius: "2000",
-      ll: `${pos[0]},${pos[1]}`, // Dynamic position based on map center or user location
-      categoryId: "4d4b7105d754a06374d81259",
+      ll: `${pos[0]},${pos[1]}`,
+      categoryId: "4d4b7105d754a06374d81259", // Category for food/restaurants
     };
 
     axios
       .get(endPoint + new URLSearchParams(parameters))
       .then((response) => {
-        // Validate response structure to prevent crashes
+        // Validate API response structure
         if (!response.data || !response.data.response || !response.data.response.venues) {
           console.warn("Unexpected API response structure:", response.data);
           return;
         }
 
-        setVenues(response.data.response.venues);
+        const fetchedVenues = response.data.response.venues;
+        setVenues(fetchedVenues);
+        
         let rests = [...restaurants];
         const excludedNames = [
           "Food Village Restaurant",
@@ -224,12 +249,12 @@ export default function App() {
           "Go food",
         ];
 
-        response.data.response.venues.forEach((venue) => {
-          // Skip excluded venues or duplicates
+        fetchedVenues.forEach((venue) => {
+          // Prevent adding excluded names or duplicates
           if (excludedNames.includes(venue.name)) return;
           if (rests.some(r => r.restaurant_name === venue.name)) return;
 
-          // Map Foursquare venue to our restaurant object structure
+          // Standardize venue data into our restaurant object format
           let newRestaurant = {
             id: venue.id || Math.random().toString(36).substr(2, 9),
             position: [venue.location.lat, venue.location.lng],
@@ -237,7 +262,7 @@ export default function App() {
             restaurant_description: venue.categories && venue.categories.length > 0 
               ? venue.categories[0].name 
               : "Restaurant",
-            restaurant_image: "/placeholder-restaurant.png", // Default image
+            restaurant_image: "/placeholder-restaurant.png",
             address: venue.location.address || "No address provided",
             avg_rating: 5,
             reviews: [],

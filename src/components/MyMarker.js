@@ -2,12 +2,18 @@ import React from "react";
 import { Icon } from "leaflet";
 import { Marker, Popup } from "react-leaflet";
 
+/**
+ * Custom Marker component for the Leaflet map.
+ * Displays either a red marker for the center/current position or a blue marker for restaurants.
+ * Clicking a restaurant marker opens a popup with the name, address, and image.
+ */
 export default function MyMarker(props) {
-  //  Create the Icon on initialization
+  // Define custom Leaflet Icons
   const LeafIcon = Icon.extend({
     options: {},
   });
-  // Create the blue and red Icon for the map
+
+  // Blue icon for restaurants
   const blueIcon = new LeafIcon({
       iconUrl:
         "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png",
@@ -17,6 +23,7 @@ export default function MyMarker(props) {
       popupAnchor: [1, -34],
       shadowSize: [41, 41],
     }),
+    // Red icon for the map center
     redIcon = new LeafIcon({
       iconUrl:
         "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
@@ -27,6 +34,11 @@ export default function MyMarker(props) {
       shadowSize: [41, 41],
     });
 
+  // Ensure position is valid before rendering
+  if (!props.position || !Array.isArray(props.position) || props.position.length !== 2) {
+    return null;
+  }
+
   return (
     <Marker
       position={props.position}
@@ -36,11 +48,18 @@ export default function MyMarker(props) {
         {props.color === "red" ? (
           <h3>Center</h3>
         ) : (
-          <>
-            <h3>{props.restaurant_name}</h3>
-            <p>{props.address}</p>
-            <img src={props.image} style={{width: "100%"}} alt="restaurant_image" />
-          </>
+          <div style={{ minWidth: "150px" }}>
+            <h3>{props.restaurant_name || "Unknown Restaurant"}</h3>
+            <p>{props.address || "No address provided"}</p>
+            {props.image && (
+              <img 
+                src={props.image} 
+                style={{ width: "100%", borderRadius: "4px", marginTop: "5px" }} 
+                alt={props.restaurant_name} 
+                onError={(e) => { e.target.src = "/placeholder-restaurant.png"; }}
+              />
+            )}
+          </div>
         )}
       </Popup>
     </Marker>

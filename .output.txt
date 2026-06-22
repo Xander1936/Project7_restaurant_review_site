@@ -1,0 +1,445 @@
+diff --git a/.env.example b/.env.example
+new file mode 100644
+index 0000000..6fcaa55
+--- /dev/null
++++ b/.env.example
+@@ -0,0 +1,2 @@
++REACT_APP_FOURSQUARE_CLIENT_ID=IQJPRMFP1NKKXV4ITTPN50K2RCGLUL5DZ1HDNIPBTRGUBLYL
++REACT_APP_FOURSQUARE_CLIENT_SECRET=WQCQISY2FCGMXDJF1QOHFC2ADUZIGCWZMVSB45CFQVDWIGFA
+
+diff --git a/package.json b/package.json
+index 1a6b07d..d67618c 100644
+--- a/package.json
++++ b/package.json
+@@ -3,11 +3,8 @@
+   "version": "0.1.0",
+   "private": true,
+   "dependencies": {
+-    "@emotion/react": "^11.14.0",
+-    "@emotion/styled": "^11.14.1",
+     "@material-ui/core": "^4.11.3",
+     "@material-ui/icons": "^4.11.2",
+-    "@mui/material": "^9.1.1",
+     "@testing-library/jest-dom": "^5.11.4",
+     "@testing-library/react": "^11.1.0",
+     "@testing-library/user-event": "^12.1.10",
+
+diff --git a/src/App.js b/src/App.js
+index 9cf1709..f09ea92 100644
+--- a/src/App.js
++++ b/src/App.js
+@@ -140,32 +140,45 @@ export default function App() {
+   const [searchTerm, setSearchTerm] = React.useState("");
+
+   const allRestaurants = useMemo(() => {
++    // Return all restaurants if search term is empty
+     if (!searchTerm) {
+       return restaurants;
+     }
++    // Case-insensitive filtering by restaurant name
+     return restaurants.filter((restaurant) =>
+       restaurant.restaurant_name
+-        .toLowerCase()
++        ?.toLowerCase()
+         .includes(searchTerm.toLowerCase())
+     );
+   }, [restaurants, searchTerm]);
+
+-  //Get the venues filtering by position from the FourSquare Api
++  // Fetch venues from Foursquare whenever position changes
+   useEffect(() => {
+-    getVenues(position);
++    if (position) {
++      getVenues(position);
++    }
++    // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [position]);
+
+-  // Give the position of the center marker
++  // Initialize location on mount
+   useEffect(() => {
+     getLocation();
++    // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
++
++  // Request browser geolocation
+   function getLocation() {
+     if (navigator.geolocation) {
+-      navigator.geolocation.getCurrentPosition(showPosition);
++      navigator.geolocation.getCurrentPosition(
++        (pos) => showPosition(pos),
++        (err) => console.warn("Geolocation error:", err.message)
++      );
+     } else {
+       console.log("Geolocation is not supported by this browser.");
+     }
+   }
++
++  // Update current position state
+   function showPosition(position) {
+     setPosition([position.coords.latitude, position.coords.longitude]);
+   }
+@@ -178,23 +191,29 @@ export default function App() {
+   const handleDrawerClose = () => {
+     setOpen(false);
+   };
+-  //Set the Four Square API parameters
+-  let getVenues = () => {
++  // Set the Four Square API parameters
++  // Using environment variables for security is recommended for production
++  let getVenues = (pos) => {
+     const endPoint = "https://api.foursquare.com/v2/venues/search?";
+     const parameters = {
+-      client_id: "IQJPRMFP1NKKXV4ITTPN50K2RCGLUL5DZ1HDNIPBTRGUBLYL",
+-      client_secret: "WQCQISY2FCGMXDJF1QOHFC2ADUZIGCWZMVSB45CFQVDWIGFA",
++      client_id: process.env.REACT_APP_FOURSQUARE_CLIENT_ID || "IQJPRMFP1NKKXV4ITTPN50K2RCGLUL5DZ1HDNIPBTRGUBLYL",
++      client_secret: process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET || "WQCQISY2FCGMXDJF1QOHFC2ADUZIGCWZMVSB45CFQVDWIGFA",
+       query: "food",
+-      near: "Douala",
+       v: "20210301",
+       radius: "2000",
+-      ll: "4.05382,9.73432",
++      ll: `${pos[0]},${pos[1]}`, // Dynamic position based on map center or user location
+       categoryId: "4d4b7105d754a06374d81259",
+     };
+
+     axios
+       .get(endPoint + new URLSearchParams(parameters))
+       .then((response) => {
++        // Validate response structure to prevent crashes
++        if (!response.data || !response.data.response || !response.data.response.venues) {
++          console.warn("Unexpected API response structure:", response.data);
++          return;
++        }
++
+         setVenues(response.data.response.venues);
+         let rests = [...restaurants];
+         const excludedNames = [
+@@ -205,36 +224,31 @@ export default function App() {
+           "Go food",
+         ];
+
+-        for (let venue of response.data.response.venues) {
+-          if (excludedNames.includes(venue.name)) {
+-            continue;
+-          }
+-
+-          const isDuplicate = rests.some(r => r.restaurant_name === venue.name);
+-          if (isDuplicate) {
+-            continue;
+-          }
++        response.data.response.venues.forEach((venue) => {
++          // Skip excluded venues or duplicates
++          if (excludedNames.includes(venue.name)) return;
++          if (rests.some(r => r.restaurant_name === venue.name)) return;
+
+-          console.log("Shazam***", venue);
++          // Map Foursquare venue to our restaurant object structure
+           let newRestaurant = {
+-            id: "",
++            id: venue.id || Math.random().toString(36).substr(2, 9),
+             position: [venue.location.lat, venue.location.lng],
+             restaurant_name: venue.name,
+-            restaurant_description: venue.categories[0].pluralName,
+-            restaurant_image:
+-              "http://localhost:3000/placeholder-restaurant.png",
+-            address: venue.location.address,
++            restaurant_description: venue.categories && venue.categories.length > 0
++              ? venue.categories[0].name
++              : "Restaurant",
++            restaurant_image: "/placeholder-restaurant.png", // Default image
++            address: venue.location.address || "No address provided",
+             avg_rating: 5,
+             reviews: [],
+             isReviewsOpen: false,
+           };
+           rests.push(newRestaurant);
+-        }
++        });
+         setRestaurants(rests);
+-        //console.log('Here we go ! ...', response.data.response.venues)
+       })
+       .catch((error) => {
+-        console.log("ERROR|| " + error);
++        console.error("Foursquare API Error:", error);
+       });
+   };
+   return (
+
+diff --git a/src/components/Map.js b/src/components/Map.js
+index ed383a2..5fff0ed 100644
+--- a/src/components/Map.js
++++ b/src/components/Map.js
+@@ -24,15 +24,15 @@ const icon = L.icon({
+
+ export default function Map({ restaurants, setRestaurants }) {
+   // All the restaurant's State
+-  const [position, setPosition] = useState([4.05382, 9.73432]);
+-
+   const [open, setOpen] = useState(false);
+   const [name, setName] = useState("");
+   const [address, setAddress] = useState("");
+   const [description, setDescription] = useState("");
+   const [image, setImage] = useState("");
+   const [Newposition, setNewPosition] = useState([4.05382, 9.73432]);
+-  const [NewRating, setNewRating] = useState();
++  const [NewRating, setNewRating] = useState("");
++
++  const initialPosition = [4.05382, 9.73432];
+
+
+   const TextFieldRef = useRef();
+@@ -48,25 +48,36 @@ export default function Map({ restaurants, setRestaurants }) {
+   };
+
+   // Function to Save the new restaurant on the map
+-  //and the Drawer with the correct properties
++  // and the Drawer with the correct properties
+   const handleSaveRestaurant = (e) => {
+     e.preventDefault();
++    // Basic validation: ensure name and address are present
+     if (name && address) {
+-      let rests = [...restaurants];
+-      let newRestaurant = {
+-        id: "",
++      const newRestaurant = {
++        id: Math.random().toString(36).substr(2, 9), // Generate a unique ID
+         position: Newposition,
+         restaurant_name: name,
+-        restaurant_description: description,
+-        restaurant_image: image,
++        restaurant_description: description || "New Restaurant",
++        restaurant_image: image || "/placeholder-restaurant.png",
+         address: address,
+-        avg_rating: NewRating,
++        avg_rating: NewRating || 5,
+         reviews: [],
+         isReviewsOpen: false,
+       };
+-      rests.push(newRestaurant);
+-      setRestaurants(rests);
+-      TextFieldRef.current.focus();
++
++      // Update restaurants state with the new entry
++      setRestaurants(prev => [...prev, newRestaurant]);
++
++      // Reset form fields
++      setName("");
++      setAddress("");
++      setDescription("");
++      setImage("");
++      setNewRating("");
++
++      if (TextFieldRef.current) {
++        TextFieldRef.current.focus();
++      }
+     }
+     setOpen(false);
+   };
+@@ -96,63 +107,64 @@ export default function Map({ restaurants, setRestaurants }) {
+         aria-describedby="alert-dialog-description"
+       >
+         <DialogTitle id="alert-dialog-title">
+-          {"Use Google's location service?"}
++          {"Add a New Restaurant"}
+         </DialogTitle>
+         <DialogContent>
+           <DialogContentText id="alert-dialog-description">
+-            Let Google help apps determine location. This means sending
+-            anonymous location data to Google, even when no apps are running.
++            Fill in the details below to add a new restaurant to the map and your list.
+           </DialogContentText>
+           <div>
+             <TextField
+-              ref={TextFieldRef}
++              fullWidth
++              margin="dense"
+               value={name}
+               onChange={(e) => setName(e.target.value)}
+-              label="Name"
++              label="Restaurant Name"
+             />
+           </div>
+           <div>
+             <TextField
+-              ref={TextFieldRef}
++              fullWidth
++              margin="dense"
+               value={image}
+               onChange={(e) => setImage(e.target.value)}
+-              label="image link"
++              label="Image URL"
+             />
+           </div>
+           <div>
+             <TextField
+-              ref={TextFieldRef}
++              fullWidth
++              margin="dense"
+               value={address}
+               onChange={(e) => setAddress(e.target.value)}
+               label="Address"
+               multiline
+-              rows={4}
+-              defaultValue="Default Value"
+-              variant="filled"
++              rows={2}
++              variant="outlined"
+             />
+           </div>
+           <div>
+             <TextField
+-              ref={TextFieldRef}
++              fullWidth
++              margin="dense"
+               value={description}
+               onChange={(e) => setDescription(e.target.value)}
+               label="Description"
+               multiline
+               rows={2}
+-              defaultValue="Default Value"
+-              variant="filled"
++              variant="outlined"
+             />
+           </div>
+           <div>
+             <TextField
+-              ref={TextFieldRef}
++              fullWidth
++              margin="dense"
+               value={NewRating}
+               onChange={(e) => setNewRating(e.target.value)}
+-              label="NewRating"
+-              multiline
+-              rows={4}
+-              defaultValue={NewRating}
+-              variant="filled"
++              label="Initial Rating (1-5)"
++              type="number"
++              inputProps={{ min: 1, max: 5 }}
++              variant="outlined"
+             />
+           </div>
+         </DialogContent>
+@@ -168,7 +180,7 @@ export default function Map({ restaurants, setRestaurants }) {
+       {/* Leaflet Map*/}
+       <MapContainer
+         className="map-container"
+-        center={position}
++        center={initialPosition}
+         zoom={15}
+         scrollWheelZoom={false}
+       >
+@@ -179,7 +191,7 @@ export default function Map({ restaurants, setRestaurants }) {
+
+         <MyMarker
+           key={"center"}
+-          position={position}
++          position={initialPosition}
+           restaurant_name={"Center"}
+           address={""}
+           image={""}
+
+diff --git a/src/components/MyRestaurants.js b/src/components/MyRestaurants.js
+index 6c5fa77..8fe4b7c 100644
+--- a/src/components/MyRestaurants.js
++++ b/src/components/MyRestaurants.js
+@@ -84,19 +84,19 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
+     setSearchRating(e.target.value);
+   };
+
+-  // Update comment / average
+-  const handleSubmit = (e, filteredIndex) => {
++  // Handle new review submission
++  const handleSubmit = (e, restaurantId) => {
+     e.preventDefault();
+
+-    const targetRestaurant = filteredRestaurants[filteredIndex];
+-    if (!targetRestaurant) return;
+-
++    // Update the restaurants state immutably
+     const updatedRestaurants = restaurants.map((r) => {
+-      if (r === targetRestaurant) {
++      // If this is the restaurant we are reviewing
++      if (r.id === restaurantId) {
+         const next = { ...r, reviews: [...(r.reviews || [])] };
+         const comment = { user_name: name, comment: body, rating: rating };
+         next.reviews.push(comment);
+
++        // Recalculate average rating
+         let ratingSum = 0;
+         for (const rev of next.reviews) {
+           ratingSum += Number(rev.rating);
+@@ -108,17 +108,15 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
+     });
+
+     setRestaurants(updatedRestaurants);
++    // Reset form fields after submission
+     setName("");
+     setRating("");
+     setBody("");
+   };
+
+-  const handleOpenReviews = (filteredIndex) => {
+-    const targetRestaurant = filteredRestaurants[filteredIndex];
+-    if (!targetRestaurant) return;
+-
++  const handleOpenReviews = (restaurantId) => {
+     const updatedRestaurants = restaurants.map((r) => {
+-      if (r === targetRestaurant) {
++      if (r.id === restaurantId) {
+         return { ...r, isReviewsOpen: !r.isReviewsOpen };
+       }
+       return r;
+@@ -127,11 +125,8 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
+     setRestaurants(updatedRestaurants);
+   };
+
+-  const deleteRestaurant = (filteredIndex) => {
+-    const targetRestaurant = filteredRestaurants[filteredIndex];
+-    if (!targetRestaurant) return;
+-
+-    const updatedRestaurants = restaurants.filter((r) => r !== targetRestaurant);
++  const deleteRestaurant = (restaurantId) => {
++    const updatedRestaurants = restaurants.filter((r) => r.id !== restaurantId);
+     setRestaurants(updatedRestaurants);
+   };
+
+@@ -156,8 +151,8 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
+         </FormControl>
+       </div>
+
+-      {filteredRestaurants.map((restaurant, index) => (
+-        <Card className={classes.root} key={index}>
++      {filteredRestaurants.map((restaurant) => (
++        <Card className={classes.root} key={restaurant.id}>
+           <CardMedia className={classes.media} image={restaurant.restaurant_image} />
+           <CardContent>
+             <h4>{restaurant.restaurant_name}</h4>
+@@ -182,7 +177,7 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
+             <CardActions disableSpacing style={{ padding: 0 }}>
+               <IconButton
+                   aria-label="delete"
+-                  onClick={() => deleteRestaurant(index)}
++                  onClick={() => deleteRestaurant(restaurant.id)}
+                   style={{ color: red[500], padding: '8px 8px 8px 0' }}
+               >
+                 <DeleteIcon />
+@@ -192,7 +187,7 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
+                   className={clsx(classes.expand, {
+                     [classes.expandOpen]: restaurant.isReviewsOpen,
+                   })}
+-                  onClick={() => handleOpenReviews(index)}
++                  onClick={() => handleOpenReviews(restaurant.id)}
+                   aria-expanded={restaurant.isReviewsOpen}
+                   aria-label="show more"
+               >
+@@ -203,7 +198,7 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
+
+           <Collapse in={restaurant.isReviewsOpen} timeout="auto" unmountOnExit>
+             <CardContent>
+-              <form onSubmit={(e) => handleSubmit(e, index)}>
++              <form onSubmit={(e) => handleSubmit(e, restaurant.id)}>
+                 <label>Customer name:</label>
+                 <input
+                   ref={inputRef}

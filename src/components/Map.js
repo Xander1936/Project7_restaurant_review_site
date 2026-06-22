@@ -22,9 +22,12 @@ const icon = L.icon({
 });
 
 
+// Map component to display the Leaflet map and handle adding new restaurants
 export default function Map({ restaurants, setRestaurants }) {
-  // All the restaurant's State
+  // State for the "Add New Restaurant" dialog
   const [open, setOpen] = useState(false);
+  
+  // States for new restaurant details being entered in the dialog
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");
@@ -32,23 +35,25 @@ export default function Map({ restaurants, setRestaurants }) {
   const [Newposition, setNewPosition] = useState([4.05382, 9.73432]);
   const [NewRating, setNewRating] = useState("");
   
+  // Fixed initial position for the map center (Douala, Cameroon)
   const initialPosition = [4.05382, 9.73432];
-  
 
   const TextFieldRef = useRef();
 
-  // Open the Modal on the Map
+  // Open the dialog to add a new restaurant
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  // Close the Modal on the Map
+  // Close the dialog and reset state if needed
   const handleClose = () => {
     setOpen(false);
   };
 
-  // Function to Save the new restaurant on the map
-  // and the Drawer with the correct properties
+  /**
+   * Validates and saves a new restaurant to the global state.
+   * Triggered by the "Save and close" button in the dialog.
+   */
   const handleSaveRestaurant = (e) => {
     e.preventDefault();
     // Basic validation: ensure name and address are present
@@ -65,10 +70,10 @@ export default function Map({ restaurants, setRestaurants }) {
         isReviewsOpen: false,
       };
       
-      // Update restaurants state with the new entry
+      // Update the shared restaurants state
       setRestaurants(prev => [...prev, newRestaurant]);
       
-      // Reset form fields
+      // Reset form fields after successful save
       setName("");
       setAddress("");
       setDescription("");
@@ -78,14 +83,16 @@ export default function Map({ restaurants, setRestaurants }) {
       if (TextFieldRef.current) {
         TextFieldRef.current.focus();
       }
+    } else {
+      alert("Please provide at least a name and address for the restaurant.");
+      return;
     }
     setOpen(false);
   };
-  // Get Location function: catch the current position coordinates for the modal
-  
-  
+
+  // Memoize markers to optimize map performance when restaurants update
   const markers = useMemo(() => {
-    return restaurants.map((r) => (
+    return (restaurants || []).map((r) => (
       <MyMarker
         key={r.id + r.restaurant_name}
         position={r.position}
