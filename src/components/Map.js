@@ -24,15 +24,15 @@ const icon = L.icon({
 
 export default function Map({ restaurants, setRestaurants }) {
   // All the restaurant's State
-  const [position, setPosition] = useState([4.05382, 9.73432]);
-
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [Newposition, setNewPosition] = useState([4.05382, 9.73432]);
-  const [NewRating, setNewRating] = useState();
+  const [NewRating, setNewRating] = useState("");
+  
+  const initialPosition = [4.05382, 9.73432];
   
 
   const TextFieldRef = useRef();
@@ -48,25 +48,36 @@ export default function Map({ restaurants, setRestaurants }) {
   };
 
   // Function to Save the new restaurant on the map
-  //and the Drawer with the correct properties
+  // and the Drawer with the correct properties
   const handleSaveRestaurant = (e) => {
     e.preventDefault();
+    // Basic validation: ensure name and address are present
     if (name && address) {
-      let rests = [...restaurants];
-      let newRestaurant = {
-        id: "",
+      const newRestaurant = {
+        id: Math.random().toString(36).substr(2, 9), // Generate a unique ID
         position: Newposition,
         restaurant_name: name,
-        restaurant_description: description,
-        restaurant_image: image,
+        restaurant_description: description || "New Restaurant",
+        restaurant_image: image || "/placeholder-restaurant.png",
         address: address,
-        avg_rating: NewRating,
+        avg_rating: NewRating || 5,
         reviews: [],
         isReviewsOpen: false,
       };
-      rests.push(newRestaurant);
-      setRestaurants(rests);
-      TextFieldRef.current.focus();
+      
+      // Update restaurants state with the new entry
+      setRestaurants(prev => [...prev, newRestaurant]);
+      
+      // Reset form fields
+      setName("");
+      setAddress("");
+      setDescription("");
+      setImage("");
+      setNewRating("");
+      
+      if (TextFieldRef.current) {
+        TextFieldRef.current.focus();
+      }
     }
     setOpen(false);
   };
@@ -96,63 +107,64 @@ export default function Map({ restaurants, setRestaurants }) {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
+          {"Add a New Restaurant"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
+            Fill in the details below to add a new restaurant to the map and your list.
           </DialogContentText>
           <div>
             <TextField
-              ref={TextFieldRef}
+              fullWidth
+              margin="dense"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              label="Name"
+              label="Restaurant Name"
             />
           </div>
           <div>
             <TextField
-              ref={TextFieldRef}
+              fullWidth
+              margin="dense"
               value={image}
               onChange={(e) => setImage(e.target.value)}
-              label="image link"
+              label="Image URL"
             />
           </div>
           <div>
             <TextField
-              ref={TextFieldRef}
+              fullWidth
+              margin="dense"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               label="Address"
               multiline
-              rows={4}
-              defaultValue="Default Value"
-              variant="filled"
+              rows={2}
+              variant="outlined"
             />
           </div>
           <div>
             <TextField
-              ref={TextFieldRef}
+              fullWidth
+              margin="dense"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               label="Description"
               multiline
               rows={2}
-              defaultValue="Default Value"
-              variant="filled"
+              variant="outlined"
             />
           </div>
           <div>
             <TextField
-              ref={TextFieldRef}
+              fullWidth
+              margin="dense"
               value={NewRating}
               onChange={(e) => setNewRating(e.target.value)}
-              label="NewRating"
-              multiline
-              rows={4}
-              defaultValue={NewRating}
-              variant="filled"
+              label="Initial Rating (1-5)"
+              type="number"
+              inputProps={{ min: 1, max: 5 }}
+              variant="outlined"
             />
           </div>
         </DialogContent>
@@ -168,7 +180,7 @@ export default function Map({ restaurants, setRestaurants }) {
       {/* Leaflet Map*/}
       <MapContainer
         className="map-container"
-        center={position}
+        center={initialPosition}
         zoom={15}
         scrollWheelZoom={false}
       >
@@ -179,7 +191,7 @@ export default function Map({ restaurants, setRestaurants }) {
 
         <MyMarker
           key={"center"}
-          position={position}
+          position={initialPosition}
           restaurant_name={"Center"}
           address={""}
           image={""}

@@ -84,19 +84,19 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
     setSearchRating(e.target.value);
   };
 
-  // Update comment / average
-  const handleSubmit = (e, filteredIndex) => {
+  // Handle new review submission
+  const handleSubmit = (e, restaurantId) => {
     e.preventDefault();
 
-    const targetRestaurant = filteredRestaurants[filteredIndex];
-    if (!targetRestaurant) return;
-
+    // Update the restaurants state immutably
     const updatedRestaurants = restaurants.map((r) => {
-      if (r === targetRestaurant) {
+      // If this is the restaurant we are reviewing
+      if (r.id === restaurantId) {
         const next = { ...r, reviews: [...(r.reviews || [])] };
         const comment = { user_name: name, comment: body, rating: rating };
         next.reviews.push(comment);
 
+        // Recalculate average rating
         let ratingSum = 0;
         for (const rev of next.reviews) {
           ratingSum += Number(rev.rating);
@@ -108,17 +108,15 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
     });
 
     setRestaurants(updatedRestaurants);
+    // Reset form fields after submission
     setName("");
     setRating("");
     setBody("");
   };
 
-  const handleOpenReviews = (filteredIndex) => {
-    const targetRestaurant = filteredRestaurants[filteredIndex];
-    if (!targetRestaurant) return;
-
+  const handleOpenReviews = (restaurantId) => {
     const updatedRestaurants = restaurants.map((r) => {
-      if (r === targetRestaurant) {
+      if (r.id === restaurantId) {
         return { ...r, isReviewsOpen: !r.isReviewsOpen };
       }
       return r;
@@ -127,11 +125,8 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
     setRestaurants(updatedRestaurants);
   };
 
-  const deleteRestaurant = (filteredIndex) => {
-    const targetRestaurant = filteredRestaurants[filteredIndex];
-    if (!targetRestaurant) return;
-
-    const updatedRestaurants = restaurants.filter((r) => r !== targetRestaurant);
+  const deleteRestaurant = (restaurantId) => {
+    const updatedRestaurants = restaurants.filter((r) => r.id !== restaurantId);
     setRestaurants(updatedRestaurants);
   };
 
@@ -156,8 +151,8 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
         </FormControl>
       </div>
 
-      {filteredRestaurants.map((restaurant, index) => (
-        <Card className={classes.root} key={index}>
+      {filteredRestaurants.map((restaurant) => (
+        <Card className={classes.root} key={restaurant.id}>
           <CardMedia className={classes.media} image={restaurant.restaurant_image} />
           <CardContent>
             <h4>{restaurant.restaurant_name}</h4>
@@ -182,7 +177,7 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
             <CardActions disableSpacing style={{ padding: 0 }}>
               <IconButton
                   aria-label="delete"
-                  onClick={() => deleteRestaurant(index)}
+                  onClick={() => deleteRestaurant(restaurant.id)}
                   style={{ color: red[500], padding: '8px 8px 8px 0' }}
               >
                 <DeleteIcon />
@@ -192,7 +187,7 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
                   className={clsx(classes.expand, {
                     [classes.expandOpen]: restaurant.isReviewsOpen,
                   })}
-                  onClick={() => handleOpenReviews(index)}
+                  onClick={() => handleOpenReviews(restaurant.id)}
                   aria-expanded={restaurant.isReviewsOpen}
                   aria-label="show more"
               >
@@ -203,7 +198,7 @@ export default function RecipeReviewCard({ restaurants, setRestaurants }) {
           
           <Collapse in={restaurant.isReviewsOpen} timeout="auto" unmountOnExit>
             <CardContent>
-              <form onSubmit={(e) => handleSubmit(e, index)}>
+              <form onSubmit={(e) => handleSubmit(e, restaurant.id)}>
                 <label>Customer name:</label>
                 <input
                   ref={inputRef}

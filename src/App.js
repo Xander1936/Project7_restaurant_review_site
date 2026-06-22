@@ -140,32 +140,45 @@ export default function App() {
   const [searchTerm, setSearchTerm] = React.useState("");
 
   const allRestaurants = useMemo(() => {
+    // Return all restaurants if search term is empty
     if (!searchTerm) {
       return restaurants;
     }
+    // Case-insensitive filtering by restaurant name
     return restaurants.filter((restaurant) =>
       restaurant.restaurant_name
-        .toLowerCase()
+        ?.toLowerCase()
         .includes(searchTerm.toLowerCase())
     );
   }, [restaurants, searchTerm]);
 
-  //Get the venues filtering by position from the FourSquare Api
+  // Fetch venues from Foursquare whenever position changes
   useEffect(() => {
-    getVenues(position);
+    if (position) {
+      getVenues(position);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [position]);
   
-  // Give the position of the center marker
+  // Initialize location on mount
   useEffect(() => {
     getLocation();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Request browser geolocation
   function getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
+      navigator.geolocation.getCurrentPosition(
+        (pos) => showPosition(pos),
+        (err) => console.warn("Geolocation error:", err.message)
+      );
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
   }
+
+  // Update current position state
   function showPosition(position) {
     setPosition([position.coords.latitude, position.coords.longitude]);
   }
@@ -178,23 +191,29 @@ export default function App() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  //Set the Four Square API parameters
-  let getVenues = () => {
+  // Set the Four Square API parameters
+  // Using environment variables for security is recommended for production
+  let getVenues = (pos) => {
     const endPoint = "https://api.foursquare.com/v2/venues/search?";
     const parameters = {
-      client_id: "IQJPRMFP1NKKXV4ITTPN50K2RCGLUL5DZ1HDNIPBTRGUBLYL",
-      client_secret: "WQCQISY2FCGMXDJF1QOHFC2ADUZIGCWZMVSB45CFQVDWIGFA",
+      client_id: process.env.REACT_APP_FOURSQUARE_CLIENT_ID || "IQJPRMFP1NKKXV4ITTPN50K2RCGLUL5DZ1HDNIPBTRGUBLYL",
+      client_secret: process.env.REACT_APP_FOURSQUARE_CLIENT_SECRET || "WQCQISY2FCGMXDJF1QOHFC2ADUZIGCWZMVSB45CFQVDWIGFA",
       query: "food",
-      near: "Douala",
       v: "20210301",
       radius: "2000",
-      ll: "4.05382,9.73432",
+      ll: `${pos[0]},${pos[1]}`, // Dynamic position based on map center or user location
       categoryId: "4d4b7105d754a06374d81259",
     };
 
     axios
       .get(endPoint + new URLSearchParams(parameters))
       .then((response) => {
+        // Validate response structure to prevent crashes
+        if (!response.data || !response.data.response || !response.data.response.venues) {
+          console.warn("Unexpected API response structure:", response.data);
+          return;
+        }
+
         setVenues(response.data.response.venues);
         let rests = [...restaurants];
         const excludedNames = [
@@ -205,36 +224,31 @@ export default function App() {
           "Go food",
         ];
 
-        for (let venue of response.data.response.venues) {
-          if (excludedNames.includes(venue.name)) {
-            continue;
-          }
+        response.data.response.venues.forEach((venue) => {
+          // Skip excluded venues or duplicates
+          if (excludedNames.includes(venue.name)) return;
+          if (rests.some(r => r.restaurant_name === venue.name)) return;
 
-          const isDuplicate = rests.some(r => r.restaurant_name === venue.name);
-          if (isDuplicate) {
-            continue;
-          }
-
-          console.log("Shazam***", venue);
+          // Map Foursquare venue to our restaurant object structure
           let newRestaurant = {
-            id: "",
+            id: venue.id || Math.random().toString(36).substr(2, 9),
             position: [venue.location.lat, venue.location.lng],
             restaurant_name: venue.name,
-            restaurant_description: venue.categories[0].pluralName,
-            restaurant_image:
-              "http://localhost:3000/placeholder-restaurant.png",
-            address: venue.location.address,
+            restaurant_description: venue.categories && venue.categories.length > 0 
+              ? venue.categories[0].name 
+              : "Restaurant",
+            restaurant_image: "/placeholder-restaurant.png", // Default image
+            address: venue.location.address || "No address provided",
             avg_rating: 5,
             reviews: [],
             isReviewsOpen: false,
           };
           rests.push(newRestaurant);
-        }
+        });
         setRestaurants(rests);
-        //console.log('Here we go ! ...', response.data.response.venues)
       })
       .catch((error) => {
-        console.log("ERROR|| " + error);
+        console.error("Foursquare API Error:", error);
       });
   };
   return (
